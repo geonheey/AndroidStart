@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "792685421726",
+    "firebase_url": "https://urssucontact-dae3e-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "urssucontact-dae3e",
+    "storage_bucket": "urssucontact-dae3e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792685421726:android:e6ea792ca4e8c41b18c78f",
+        "android_client_info": {
+          "package_name": "com.example.urssuproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792685421726-npgnt36u4qhc4np2p2pg26sdq6dvnklk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIN8rQFzspQ51oNkkGHSN4iejg4d2P_as"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792685421726-npgnt36u4qhc4np2p2pg26sdq6dvnklk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
