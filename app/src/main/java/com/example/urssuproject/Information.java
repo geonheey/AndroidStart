@@ -1,8 +1,8 @@
 package com.example.urssuproject;
 
 public class Information {
-    String name;
-    String num;
+    private String name;
+    private String num;
 
     public Information(){}
 
