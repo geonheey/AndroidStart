@@ -5,11 +5,14 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,27 +27,30 @@ public class ListFragment extends Fragment {
     private RecyclerView recyclerView;
 
     private View view;
-    private String name,number;
+
     private TextView tv_name, tv_num;
 
+
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_list, container, false);
+        tv_name = v.findViewById(R.id.tv_Name);
+        tv_num = v.findViewById(R.id.tv_Number);
 
 
-        View viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_list,container,false);
-        tv_num = viewGroup.findViewById(R.id.tv_number);
 
-        //RequestActivity에서 전달한 번들 저장
-        Bundle bundle = getArguments();
+        if(getArguments() != null){
 
-        //번들 안의 텍스트 불러오기
-        String text = bundle.getString("text");
+            String param1 = getArguments().getString("NAME"); // 전달한 key 값
+            String param2 = getArguments().getString("NUMBER"); // 전달한 key 값
+            tv_name.setText(param1);
+            tv_num.setText(param2);
 
-        //fragment1의 TextView에 전달 받은 text 띄우기
-        tv_num.setText(text);
-
-        return viewGroup;
+        }
+        return v;
 
     }
+
+
 }

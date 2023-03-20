@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +27,7 @@ public class RegisterFragment extends Fragment {
     private EditText mName, mNumber;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -36,16 +38,35 @@ public class RegisterFragment extends Fragment {
         mName = v.findViewById(R.id.editName);
         mNumber = v.findViewById(R.id.editPhone);
 
+
+
         mSave.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                RegisterFragment fragment = new RegisterFragment(); // Fragment 생성
-                Bundle bundle = new Bundle();
-                bundle.putString("name", mName.getText().toString()); // Key, Value
-                bundle.putString("param2",mNumber.getText().toString()); // Key, Value
-                fragment.setArguments(bundle);
 
-                Toast.makeText(getActivity(),"등록되었습니다.", Toast.LENGTH_SHORT).show();
+                String strName = mName.getText().toString();
+                String strNumber = mNumber.getText().toString();
+
+                if(strName.length() > 0 && strNumber.length() > 0){
+                    Toast.makeText(getActivity(), "등록되었습니다.", Toast.LENGTH_SHORT).show();
+                    RegisterFragment fragment1 = new RegisterFragment(); // Fragment 생성
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("NAME", mName.getText().toString()); // Key, Value
+                    bundle.putString("NUMBER", mNumber.getText().toString()); // Key, Value
+                    ListFragment fragment2 = new ListFragment();
+                    //FragmentTransaction transaction2 = getActivity().getSupportFragmentManager().beginTransaction();
+                    fragment2.setArguments(bundle);
+                    transaction.replace(R.id.containers, fragment2);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                    //fragment1.setArguments(bundle);
+                }else{
+                    Toast.makeText(getActivity(), "등록 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                }
+
+
+
 
             }
         });
